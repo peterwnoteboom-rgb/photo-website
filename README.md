@@ -1,9 +1,10 @@
-# photo-website
+// App.jsx
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import "./App.css"; // optional, for any custom styles
 
-export default function Portfolio() {
+export default function App() {
   // Automatically import all images in /public/images
   const images = import.meta.glob("/public/images/*.{jpg,jpeg,png,gif}", { eager: true, import: "default" });
 
