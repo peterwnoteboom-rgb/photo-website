@@ -2,18 +2,14 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import "./App.css"; // optional, for any custom styles
+import "./App.css";
 
 export default function App() {
-  // Automatically import all images in /public/images
-  const images = import.meta.glob("/public/images/*.{jpg,jpeg,png,gif}", { eager: true, import: "default" });
-
-  const photos = Object.keys(images).map((path) => {
-    const parts = path.split("/");
-    const filename = parts[parts.length - 1];
-    const title = filename.replace(/\.[^.]+$/, "").replace(/[-_]/g, " ");
-    return { src: "/images/" + filename, title };
-  });
+  // Replace with your actual GitHub raw image URL
+  const photo = {
+    src: "https://raw.githubusercontent.com/your-username/my-portfolio/main/images/mypic.jpg",
+    title: "My GitHub Photo"
+  };
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900">
@@ -31,7 +27,7 @@ export default function App() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center bg-black">
         <img
-          src="/images/hero.jpg"
+          src={photo.src}
           alt="Hero"
           className="absolute inset-0 w-full h-full object-cover opacity-60"
         />
@@ -47,23 +43,20 @@ export default function App() {
         </motion.div>
       </section>
 
-      {/* Gallery */}
+      {/* Gallery with one image */}
       <section className="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {photos.map((photo, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: idx * 0.1 }}
-          >
-            <Card className="overflow-hidden rounded-2xl shadow-md">
-              <img src={photo.src} alt={photo.title} className="w-full h-64 object-cover" />
-              <CardContent className="p-4">
-                <h3 className="font-semibold text-lg">{photo.title}</h3>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Card className="overflow-hidden rounded-2xl shadow-md">
+            <img src={photo.src} alt={photo.title} className="w-full h-64 object-cover" />
+            <CardContent className="p-4">
+              <h3 className="font-semibold text-lg">{photo.title}</h3>
+            </CardContent>
+          </Card>
+        </motion.div>
       </section>
 
       {/* Footer */}
