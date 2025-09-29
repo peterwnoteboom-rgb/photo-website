@@ -7,7 +7,7 @@ import "./App.css";
 export default function App() {
   // Replace with your actual GitHub raw image URL
   const photo = {
-    src: "https://raw.githubusercontent.com/your-username/my-portfolio/main/images/mypic.jpg",
+    src: "[https://raw.githubusercontent.com/your-username/my-portfolio/main/images/mypic.jpg](https://github.com/peterwnoteboom-rgb/photo-website/blob/main/Mountain%20dare%20mighty%20things.jpg)",
     title: "My GitHub Photo"
   };
 
